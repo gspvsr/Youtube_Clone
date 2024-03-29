@@ -39,9 +39,11 @@ pipeline {
                  sh "trivy fs . > trivyfs.txt"
              }
         }
+    }
+
     post {
-    always {
-        emailext attachLog: true,
+        always {
+            emailext attachLog: true,
             subject: "'${currentBuild.result}'",
             body: "Project: ${env.JOB_NAME}<br/>" +
                 "Build Number: ${env.BUILD_NUMBER}<br/>" +
@@ -51,5 +53,5 @@ pipeline {
         }
     }
 
-    }
+    
 }
