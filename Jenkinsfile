@@ -39,36 +39,6 @@ pipeline {
                  sh "trivy fs . > trivyfs.txt"
              }
          }
-    //      stage("Docker Build & Push"){
-    //          steps{
-    //              script{
-    //                withDockerRegistry(credentialsId: 'dockerhub', toolName: 'docker'){   
-    //                   sh "docker build -t youtube-clone ."
-    //                   sh "docker tag youtube-clone gspvsr/youtube-clone:latest "
-    //                   sh "docker push gspvsr/youtube-clone:latest "
-    //                 }
-    //             }
-    //         }
-    //     }
-    //     stage("TRIVY Image Scan"){
-    //         steps{
-    //             sh "trivy image ashfaque9x/youtube-clone:latest > trivyimage.txt" 
-    //         }
-    //     }
-    //     stage('Deploy to Kubernets'){
-    //         steps{
-    //             script{
-    //                 dir('Kubernetes') {
-    //                   withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'kubernetes', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
-    //                   sh 'kubectl delete --all pods'
-    //                   sh 'kubectl apply -f deployment.yml'
-    //                   sh 'kubectl apply -f service.yml'
-    //                   }   
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
     post {
      always {
         emailext attachLog: true,
@@ -79,5 +49,7 @@ pipeline {
             to: 'gspvsr@yahoo.com',                              
             attachmentsPattern: 'trivyfs.txt,trivyimage.txt'
         }
+    }
+
     }
 }
