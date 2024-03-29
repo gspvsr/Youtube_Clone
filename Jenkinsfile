@@ -38,9 +38,9 @@ pipeline {
              steps {
                  sh "trivy fs . > trivyfs.txt"
              }
-         }
+        }
     post {
-     always {
+    always {
         emailext attachLog: true,
             subject: "'${currentBuild.result}'",
             body: "Project: ${env.JOB_NAME}<br/>" +
