@@ -40,6 +40,13 @@ pipeline {
              }
         }
 
+        stage('print') {
+             steps {
+                 sh "ls -l"
+             }
+        }
+
+
         stage("Dockr Build & Push"){
             steps{
                 script{
