@@ -54,10 +54,11 @@ pipeline {
         
         stage("TRIVY Image Scan"){
             steps{
-                sh "trivy image ashfaque9x/youtube-clone:latest > trivyimage.txt" 
+                sh "trivy image gspvsr/youtube-clone:latest > trivyimage.txt" 
             }
         }       
     }
+
     post {
         always {
             emailext attachLog: true,
