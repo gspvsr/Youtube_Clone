@@ -43,7 +43,7 @@ pipeline {
         stage("Dockr Build & Push"){
             steps{
                 script{
-                    withwithDockerRegistry(credentialsId: 'dockerhub', toolName: 'docker'){   
+                    withDockerRegistry(credentialsId: 'dockerhub', toolName: 'docker'){   
                       sh "docker build -t youtube-clone ."
                       sh "docker tag youtube-clone gspvsr/youtube-clone:latest "
                       sh "docker push gspvsr/youtube-clone:latest "
