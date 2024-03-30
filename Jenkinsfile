@@ -44,7 +44,7 @@ pipeline {
             steps{
                 script{
                     withDockerRegistry(credentialsId: 'dockerhub', toolName: 'docker'){   
-                      sh "docker build -t youtube-clone ."
+                      sh docker.build("youtube-clone", "-f dockerfiles/Dockerfile .")
                       sh "docker tag youtube-clone gspvsr/youtube-clone:latest "
                       sh "docker push gspvsr/youtube-clone:latest "
                     } 
