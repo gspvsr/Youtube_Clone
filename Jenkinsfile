@@ -16,7 +16,7 @@ pipeline {
         
         stage("Sonarqube Analysis") {
             steps {
-                withSonarQubeEnv('SonarQube-Server') {
+                withSonarQubeEnv('sonar-scanner') {
                     sh '''$SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Youtube-CICD \
                     -Dsonar.projectKey=Youtube-CICD'''
                 }
