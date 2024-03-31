@@ -15,7 +15,7 @@ pipeline {
         }
         stage(' git checkout') {
             steps {
-                git branch: 'main' url: 'https://github.com/gspvsr/Youtube_Clone.git'
+                git branch: 'main', url: 'https://github.com/gspvsr/Youtube_Clone.git'
             }
         }
         stage("Sonarqube Analysis") {
