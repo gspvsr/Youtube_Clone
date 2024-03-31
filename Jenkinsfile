@@ -36,22 +36,27 @@ pipeline {
         }
         stage('TRIVY FS SCAN') {
              steps {
-                 sh "trivy fs . > trivyfs.txt"
+                sh "trivy fs . > trivyfs.txt"
              }
         }
-
-        stage("Dockr Build & Push"){
+        stage("Dockr Build"){
             steps{
                 script{
                     withDockerRegistry(credentialsId: 'dockerhub', toolName: 'docker'){   
-                      sh docker.build("youtube-clone", "-f dockerfiles/Dockerfile .")
-                      sh "docker tag youtube-clone gspvsr/youtube-clone:latest "
+                      sh docker.build -t gspvsr/youtube-clone:latest .
+                    } 
+                }
+            }
+        }
+        stage("Dockr push"){
+            steps{
+                script{
+                    withDockerRegistry(credentialsId: 'dockerhub', toolName: 'docker'){   
                       sh "docker push gspvsr/youtube-clone:latest "
                     } 
                 }
             }
         }
-        
         stage("TRIVY Image Scan"){
             steps{
                 sh "trivy image gspvsr/youtube-clone:latest > trivyimage.txt" 
