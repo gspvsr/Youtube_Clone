@@ -42,8 +42,8 @@ pipeline {
         stage("Dockr Build"){
             steps{
                 script{
-                    withDockerRegistry(credentialsId: 'dockerhub', toolName: 'docker'){   
-                      sh "docker.build -t gspvsr/youtube-clone:latest ."
+                    withDockerRegistry(credentialsId: 'dockerhub', toolName: 'docker') {
+                      sh "docker build -t gspvsr/youtube-clone:latest ."
                     } 
                 }
             }
