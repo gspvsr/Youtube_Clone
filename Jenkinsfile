@@ -13,7 +13,11 @@ pipeline {
                 cleanWs()
             }
         }
-        
+        stage(' git checkout') {
+            steps {
+                git branch: 'main' url: 'https://github.com/gspvsr/Youtube_Clone.git'
+            }
+        }
         stage("Sonarqube Analysis") {
             steps {
                 withSonarQubeEnv('sonar-scanner') {
