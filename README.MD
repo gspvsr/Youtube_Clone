@@ -1,0 +1,5 @@
+ECLIPS
+SONARQUBE
+GATES: SONAR QUALITY GATES
+Nodejs : nodejs16
+Docker
