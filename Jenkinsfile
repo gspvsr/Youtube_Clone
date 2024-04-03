@@ -40,7 +40,7 @@ pipeline {
         }
         stage('TRIVY FS SCAN') {
              steps {
-                sh "/usr/local/bin/trivy fs . > trivyfs.txt"
+                sh "/usr/bin/trivy fs . > trivyfs.txt"
              }
         }
         stage("Dockr Build"){
