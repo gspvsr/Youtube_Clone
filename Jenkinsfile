@@ -29,7 +29,7 @@ pipeline {
         stage("Quality Gate") {
             steps {
                 script {
-                    waitForQualityGate abortPipeline: false, credentialsId: 'sonar-scanner'
+                    waitForQualityGate abortPipeline: false, credentialsId: 'SonarQube-Quality-Gate'
                 }
             }
         }
@@ -78,7 +78,5 @@ pipeline {
             to: 'gspvsr@yahoo.com',                              
             attachmentsPattern: 'trivyfs.txt,trivyimage.txt'
         }
-    }
-
-    
+    }  
 }
