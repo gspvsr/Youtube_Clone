@@ -66,8 +66,6 @@ pipeline {
                 sh "trivy image gspvsr/youtube-clone:latest > trivyimage.txt" 
             }
         }       
-    }
-    stages {
         stage('Deploy to Kubernets'){
             steps{
                 script{
