@@ -6,6 +6,7 @@ pipeline {
     }
     environment {
         SCANNER_HOME = tool 'sonar-scanner'
+        NODE_OPTIONS = "--max-old-space-size=4096"
     }
     stages {
         stage('clean workspace') {
